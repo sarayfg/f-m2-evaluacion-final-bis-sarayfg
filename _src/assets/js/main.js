@@ -5,7 +5,7 @@ const inputs = document.querySelectorAll ('.input-cards-number');
 const btnEl = document.querySelector ('.btn-start');
 const cardsList = document.querySelector ('.cards__container');
 const backCardsList = document.querySelector ('.back-cards__container');
-const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB`;
+//const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB`;
 let cardNumber = '';
 let url = '';
 let img = '';
