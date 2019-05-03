@@ -3,10 +3,12 @@
 // Recoger elementos del html
 const inputs = document.querySelectorAll ('.input-cards-number');
 const btnEl = document.querySelector ('.btn-start');
-const cardsList = document.querySelector ('.cards-container');
+const cardsList = document.querySelector ('.cards__container');
+const backCardsList = document.querySelector ('.back-cards__container');
+const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB`;
 let cardNumber = '';
 let url = '';
-let img ='';
+let img = '';
 
 //BUCLE PARA INCLUIR UN LISTENER EN CADA INPUT
 for (const input of inputs) {
@@ -15,7 +17,6 @@ for (const input of inputs) {
 
 // FUNCION DEL CLICK DEL INPUT QUE RECOGE SU VALOR Y CREA LA URL
 function handlerInputClick (event) {
-  console.log ('el input funciona');
   cardNumber = event.currentTarget.value;
   url = `https://raw.githubusercontent.com/Adalab/cards-data/master/${cardNumber}.json`;
 }
@@ -24,6 +25,8 @@ btnEl.addEventListener ('click', handlerBtnClick);
 
 // FUNCION HANDLER BUTTON QUE RECOGE EL FETCH
 function handlerBtnClick () {
+  cardsList.innerHTML ='';
+  backCardsList.innerHTML ='';
   getCards ();
 }
 
@@ -34,12 +37,12 @@ function getCards () {
       return response.json ();
     })
     .then (function (data) {
-      console.log (data);
       for (let i = 0; i < data.length; i++) {
-        img = data[i].image;   
-        printCards(img);
+        img = data[i].image;
+        printCards (img);
+        printBackCards();
       }
-    });  
+    });
 }
 
 // cuando hago el fetch quiero hacer dos cosas :
@@ -48,9 +51,16 @@ function getCards () {
 
 function printCards (imagen) {
   const newItem = document.createElement ('li');
-  const newImage = document.createElement('img');
+  const newImage = document.createElement ('img');
   newImage.src = `${imagen}`;
-  console.log(newImage);
-  newItem.appendChild(newImage);
-  cardsList.appendChild(newItem);
+  newItem.appendChild (newImage);
+  cardsList.appendChild (newItem);
+}
+
+function printBackCards () {
+  const newBackCard = document.createElement ('li');
+  const newImgBackCard = document.createElement ('img');
+  newImgBackCard.src = backCardImg;
+  newBackCard.appendChild(newImgBackCard);
+  backCardsList.appendChild(newBackCard);
 }
