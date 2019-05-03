@@ -51,7 +51,9 @@ function getCards () {
 
 function printCards (imagen) {
   const newItem = document.createElement ('li');
+  newItem.setAttribute('class', 'pokemon-card');
   const newImage = document.createElement ('img');
+  newImage.setAttribute('class', 'pokemon-img');
   newImage.src = `${imagen}`;
   newItem.appendChild (newImage);
   cardsList.appendChild (newItem);
@@ -59,6 +61,7 @@ function printCards (imagen) {
 
 function printBackCards () {
   const newBackCard = document.createElement ('li');
+  newBackCard.setAttribute('class', 'back-card');
   const newImgBackCard = document.createElement ('img');
   newImgBackCard.src = backCardImg;
   newBackCard.appendChild(newImgBackCard);
