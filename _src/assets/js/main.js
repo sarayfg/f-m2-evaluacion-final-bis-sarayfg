@@ -10,7 +10,7 @@ let cardNumber = '';
 let url = '';
 let img = '';
 
-getSavedCards();
+getSavedCards ();
 //BUCLE PARA INCLUIR UN LISTENER EN CADA INPUT
 for (const inputEl of inputs) {
   inputEl.addEventListener ('input', handlerInputClick);
@@ -33,12 +33,12 @@ function handlerBtnClick () {
 }
 
 // FUNCION QUE HACE EL FETCH
-function getCards () {
-  fetch (url)
-    .then (function (response) {
-      return response.json ();
+function getCards(){
+  fetch(url)
+  .then (function(response) {
+      return response.json();
     })
-    .then (function (data) {
+    .then(function(data){
       for (let i = 0; i < data.length; i++) {
         img = data[i].image;
         printCards (img);
@@ -76,17 +76,18 @@ function saveCardsNumber () {
   localStorage.setItem ('number', cardNumber);
 }
 
-function getSavedCards() {
+function getSavedCards () {
   if (localStorage.number) {
-    const savedCards = localStorage.getItem('number');
-    console.log(savedCards);
+    const savedCards = localStorage.getItem ('number');
     for (const input of inputs) {
-        if(input.value === savedCards) {
-            input.setAttribute('checked', 'checked');
-        }
+      if (input.value === savedCards) {
+        input.setAttribute ('checked', 'checked');
+        url = `https://raw.githubusercontent.com/Adalab/cards-data/master/${savedCards}.json`;
+      }
     }
+  }
 }
-}
+
 
 //hacer funcion que al hacer click en la tarjeta, me quite la clase hidden de la imagen de pokemon y me la añada a la otra
 
