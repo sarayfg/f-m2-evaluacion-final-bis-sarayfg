@@ -35,7 +35,7 @@ function handlerBtnClick () {
 // FUNCION QUE HACE EL FETCH
 function getCards(){
   fetch(url)
-  .then (function(response) {
+    .then (function(response) {
       return response.json();
     })
     .then(function(data){
@@ -67,7 +67,9 @@ function printBackCards () {
   const newImgBackCard = document.createElement ('img');
   newImgBackCard.src = backCardImg;
   newBackCard.appendChild (newImgBackCard);
-  backCardsList.appendChild (newBackCard);
+  backCardsList.appendChild (newBackCard); 
+
+  newBackCard.addEventListener('click', handlerItemClick);
 }
 
 //local storage
@@ -89,6 +91,21 @@ function getSavedCards () {
 }
 
 
+
+function handlerItemClick(event){
+    event.currentTarget.classList.toggle('test');
+  console.log('hola');
+}
+   
+// }
+//añadir el click a los elementos de la lista
+
+
 //hacer funcion que al hacer click en la tarjeta, me quite la clase hidden de la imagen de pokemon y me la añada a la otra
 
 //otre opcion seria : quitame este elemento de la lista y añademe este
+// const backCardsItems = document.querySelectorAll('.back-card');
+//   console.log(backCardsItems);
+//   for (const backCard of backCardsItems) {
+//   backCard.addEventListener('click', handlerItemClick);}
+//   handlerItemClick(event);
