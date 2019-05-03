@@ -46,9 +46,9 @@ function getCards () {
 
 function printCards (imagen) {
   const newItem = document.createElement ('li');
-  newItem.setAttribute ('class', 'pokemon-card-default');
+  newItem.classList.add ('pokemon-card-default', 'pokemon-card');
   const newImage = document.createElement ('img');
-  newImage.setAttribute ('class', 'hidden');
+  newImage.classList.add ('hidden', 'pokemon-img');
   newImage.src = `${imagen}`;
   newItem.appendChild (newImage);
   cardsList.appendChild (newItem);
@@ -73,15 +73,6 @@ function getSavedCards () {
 
 function handlerItemClick (event) {
   const element = event.currentTarget;
-  if (element.classList.contains ('pokemon-card-default')) {
-    element.classList.remove ('pokemon-card-default');
-    element.classList.add ('pokemon-card');
-    element.firstElementChild.classList.remove ('hidden');
-    element.firstElementChild.classList.add ('pokemon-img');
-  } else if (!element.classList.contains ('pokemon-card-default')) {
-    element.classList.add ('pokemon-card-default');
-    element.classList.remove ('pokemon-card');
-    element.firstElementChild.classList.add ('hidden');
-    element.firstElementChild.classList.remove ('pokemon-img');
-  }
+    element.classList.toggle('pokemon-card-default');
+    element.firstElementChild.classList.toggle('hidden');
 }
