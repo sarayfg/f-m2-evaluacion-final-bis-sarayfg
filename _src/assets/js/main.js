@@ -73,6 +73,6 @@ function getSavedCards () {
 
 function handlerItemClick (event) {
   const element = event.currentTarget;
-    element.classList.toggle('pokemon-card-default');
-    element.firstElementChild.classList.toggle('hidden');
+  element.classList.toggle ('pokemon-card-default');
+  element.firstElementChild.classList.toggle ('hidden');
 }
