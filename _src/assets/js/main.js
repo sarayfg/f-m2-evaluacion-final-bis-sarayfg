@@ -9,6 +9,10 @@ const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADA
 let cardNumber = '';
 let url = '';
 let img = '';
+// let newItem = '';
+// let newImage ='';
+let listItems =[];
+
 
 getSavedCards ();
 //BUCLE PARA INCLUIR UN LISTENER EN CADA INPUT
@@ -42,7 +46,7 @@ function getCards(){
       for (let i = 0; i < data.length; i++) {
         img = data[i].image;
         printCards (img);
-        printBackCards ();
+        //printBackCards ();
       }
     });
 }
@@ -53,24 +57,28 @@ function getCards(){
 
 function printCards (imagen) {
   const newItem = document.createElement ('li');
-  newItem.setAttribute ('class', 'pokemon-card');
+  newItem.setAttribute ('class', 'pokemon-card-default');
   const newImage = document.createElement ('img');
-  newImage.setAttribute ('class', 'pokemon-img');
+  newImage.setAttribute ('class', 'hidden');
   newImage.src = `${imagen}`;
   newItem.appendChild (newImage);
   cardsList.appendChild (newItem);
+  newItem.addEventListener('click', handlerItemClick);
 }
 
-function printBackCards () {
-  const newBackCard = document.createElement ('li');
-  newBackCard.setAttribute ('class', 'back-card');
-  const newImgBackCard = document.createElement ('img');
-  newImgBackCard.src = backCardImg;
-  newBackCard.appendChild (newImgBackCard);
-  backCardsList.appendChild (newBackCard); 
 
-  newBackCard.addEventListener('click', handlerItemClick);
-}
+// function printBackCards () {
+//   const newBackCard = document.createElement ('li');
+//   newBackCard.setAttribute ('class', 'back-card');
+//   const newImgBackCard = document.createElement ('img');
+//   newImgBackCard.src = backCardImg;
+//   newImgBackCard.setAttribute('class', 'default-img')
+//   newBackCard.appendChild (newImgBackCard);
+//   backCardsList.appendChild (newBackCard); 
+//   console.log(backCardsList);
+
+//   newBackCard.addEventListener('click', handlerItemClick);
+// }
 
 //local storage
 
@@ -93,19 +101,15 @@ function getSavedCards () {
 
 
 function handlerItemClick(event){
-    event.currentTarget.classList.toggle('test');
-  console.log('hola');
-}
-   
-// }
-//añadir el click a los elementos de la lista
+    const element = event.currentTarget;
+    element.classList.remove('pokemon-card-default');
+    element.classList.add('pokemon-card');
+    element.firstElementChild.classList.remove('hidden');
+    element.firstElementChild.classList.add('pokemon-img');
 
 
-//hacer funcion que al hacer click en la tarjeta, me quite la clase hidden de la imagen de pokemon y me la añada a la otra
 
-//otre opcion seria : quitame este elemento de la lista y añademe este
-// const backCardsItems = document.querySelectorAll('.back-card');
-//   console.log(backCardsItems);
-//   for (const backCard of backCardsItems) {
-//   backCard.addEventListener('click', handlerItemClick);}
-//   handlerItemClick(event);
+
+//   event.currentTarget.classList.toggle('pokemon-card-default');
+//   event.currentTarget.firstElementChild.classList.toggle('hidden');
+    }

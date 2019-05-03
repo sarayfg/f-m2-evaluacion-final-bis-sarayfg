@@ -3,11 +3,7 @@
     display: flex;
     flex-direction: row;
 }
-.pokemon-card{
-    width: 160px;
-    height: 195px;
-    margin: 10px;
-}
+
 .pokemon-img {
     width: 100%;
 }
@@ -30,6 +26,14 @@
     display: none;
 }
 
-.test {
-    background-color: #red;
+.pokemon-card{
+    width: 160px;
+    height: 195px;
+    margin: 10px;
+}
+.pokemon-card-default {
+    width: 160px;
+    height: 195px;
+    margin: 10px;
+    background: url('https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB'); 
 }
