@@ -35,7 +35,6 @@ function getCards () {
       return response.json ();
     })
     .then (function (data) {
-      //console.log(data);
       for (let i = 0; i < data.length; i++) {
         img = data[i].image;
         cardId = data[i].pair;
@@ -49,7 +48,6 @@ function printCards (imagen) {
   const newItem = document.createElement ('li');
   newItem.classList.add ('pokemon-card');
   newItem.setAttribute ('data-id', `${cardId}`);
-  console.log ('este es', newItem);
   const newImage = document.createElement ('img');
   newImage.classList.add ('hidden', 'pokemon-img');
   newImage.src = `${imagen}`;
