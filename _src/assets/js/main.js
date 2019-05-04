@@ -7,7 +7,8 @@ const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADA
 let cardNumber = '';
 let url = '';
 let img = '';
-let cardId ='';
+let cardId = '';
+let cards = '';
 
 getSavedCards ();
 
@@ -28,9 +29,9 @@ function handlerBtnClick () {
   getCards ();
 }
 
-function getCards(){
+function getCards () {
   fetch (url)
-    .then (function(response) {
+    .then (function (response) {
       return response.json ();
     })
     .then (function (data) {
@@ -39,7 +40,7 @@ function getCards(){
         img = data[i].image;
         cardId = data[i].pair;
         printCards (img);
-        console.log(cardId);
+        console.log (cardId);
       }
     });
 }
@@ -47,8 +48,8 @@ function getCards(){
 function printCards (imagen) {
   const newItem = document.createElement ('li');
   newItem.classList.add ('pokemon-card');
-  newItem.setAttribute('data-id', `${cardId}`);
-  console.log('este es', newItem);
+  newItem.setAttribute ('data-id', `${cardId}`);
+  console.log ('este es', newItem);
   const newImage = document.createElement ('img');
   newImage.classList.add ('hidden', 'pokemon-img');
   newImage.src = `${imagen}`;
@@ -80,24 +81,7 @@ function getSavedCards () {
 function handlerItemClick (event) {
   const element = event.currentTarget;
   element.firstElementChild.classList.toggle ('hidden');
-  element.lastElementChild.classList.toggle ('hidden'); 
-
-  //hacer un bucle por la lista, si alguno de ellos contiene pokemon img y su .pair es igual al del event.current.target....sino. se dan la vuelta(hid
+  element.lastElementChild.classList.toggle ('hidden');
   game(element);
-}
-
-function game(element) {
-  const cards =document.querySelectorAll('.pokemon-card');
-  console.log(cards);
-  for (const card of cards) {
-    if(card.lastElementChild.classList.contains('hidden') && element.dataset.id !== card.dataset.id){
-      console.log('casi esta');
-      startAgain(card);
-    }
-  }
-}
-function startAgain(card) {
-  card.firstElementChild.classList.add('hidden');
-  card.lastElementChild.classList.remove('hidden');
 }
 

@@ -1,9 +1,19 @@
 /* eslint-disable strict */
 
-// cuando pincho en dos cartas y estas son iguales:
-    // ver en el data si comparten algun dato, como por ejemplo un id
-     //si estas son iguales se quedaran las dos volteadas, (o las borramos de la lista?)
-     //si son diferentes todas se darán la vuelta
-
-// el elemento que es igual es el .pair del objeto
-
+function game (element) {
+  cards = document.querySelectorAll ('.pokemon-card');
+  for (const card of cards) {
+    if (
+      card.lastElementChild.classList.contains ('hidden') &&
+      element.dataset.id !== card.dataset.id
+    ) {
+      setTimeout (startAgain, 2000);
+    }
+  }
+}
+const startAgain = () => {
+  for (const card of cards) {
+    card.firstElementChild.classList.add ('hidden');
+    card.lastElementChild.classList.remove ('hidden');
+  }
+};
