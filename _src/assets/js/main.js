@@ -4,8 +4,7 @@
 const inputs = document.querySelectorAll ('.input-cards-number');
 const btnEl = document.querySelector ('.btn-start');
 const cardsList = document.querySelector ('.cards__container');
-const backCardsList = document.querySelector ('.back-cards__container');
-//const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB`;
+const backCardImg = `https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB`;
 let cardNumber = '';
 let url = '';
 let img = '';
@@ -26,7 +25,6 @@ btnEl.addEventListener ('click', handlerBtnClick);
 
 function handlerBtnClick () {
   cardsList.innerHTML = '';
-  backCardsList.innerHTML = '';
   getCards ();
 }
 
@@ -46,11 +44,15 @@ function getCards () {
 
 function printCards (imagen) {
   const newItem = document.createElement ('li');
-  newItem.classList.add ('pokemon-card-default', 'pokemon-card');
+  newItem.classList.add ('pokemon-card');
   const newImage = document.createElement ('img');
   newImage.classList.add ('hidden', 'pokemon-img');
   newImage.src = `${imagen}`;
+  const newDefaultImage = document.createElement('img');
+  newDefaultImage.classList.add('pokemon-card-default');
+  newDefaultImage.src = backCardImg;
   newItem.appendChild (newImage);
+  newItem.appendChild (newDefaultImage);
   cardsList.appendChild (newItem);
   newItem.addEventListener ('click', handlerItemClick);
 }
@@ -73,6 +75,6 @@ function getSavedCards () {
 
 function handlerItemClick (event) {
   const element = event.currentTarget;
-    element.classList.toggle('pokemon-card-default');
     element.firstElementChild.classList.toggle('hidden');
+    element.lastElementChild.classList.toggle('hidden');
 }
