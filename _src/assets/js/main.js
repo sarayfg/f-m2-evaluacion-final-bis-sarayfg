@@ -28,16 +28,15 @@ function handlerBtnClick () {
   getCards ();
 }
 
-function getCards () {
+function getCards(){
   fetch (url)
-    .then (function (response) {
+    .then (function(response) {
       return response.json ();
     })
     .then (function (data) {
       for (let i = 0; i < data.length; i++) {
         img = data[i].image;
         printCards (img);
-        //printBackCards ();
       }
     });
 }

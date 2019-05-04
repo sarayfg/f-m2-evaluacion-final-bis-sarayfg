@@ -38,17 +38,14 @@
 .input-cards-number:checked~ .checkmark {
     background: url('https://image.flaticon.com/icons/svg/914/914726.svg');   
 }
-
 .cards__container {
     list-style: none;
     display: flex;
     flex-direction: row;
 }
-
 .pokemon-img {
     width: 100%;
 }
-
 .back-cards__container {
     list-style: none;
     display: flex;
@@ -57,16 +54,13 @@
 .back-card {
     margin: 10px;
 }
-
 .list__container {
     display: flex;
     flex-direction: column;
 }
-
 .hidden {
     display: none;
 }
-
 .pokemon-card{
     width: 160px;
     height: 195px;
