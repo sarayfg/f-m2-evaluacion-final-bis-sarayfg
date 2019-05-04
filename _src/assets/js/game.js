@@ -1,6 +1,6 @@
 /* eslint-disable strict */
 
-function game (element) {
+function checkCards (element) {
   cards = document.querySelectorAll ('.pokemon-card');
   for (const card of cards) {
     if (

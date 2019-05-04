@@ -82,6 +82,5 @@ function handlerItemClick (event) {
   const element = event.currentTarget;
   element.firstElementChild.classList.toggle ('hidden');
   element.lastElementChild.classList.toggle ('hidden');
-  game(element);
+  checkCards (element);
 }
-
