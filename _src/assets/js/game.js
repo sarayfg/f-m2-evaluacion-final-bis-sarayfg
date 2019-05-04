@@ -7,8 +7,3 @@
 
 // el elemento que es igual es el .pair del objeto
 
-function checkCard(event) {
-    if (event.currentTarget.cardId !== event.target.cardId) {
-        event.currentTarget.classList.add('hidden');
-    }
-}

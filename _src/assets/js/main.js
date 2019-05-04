@@ -83,16 +83,21 @@ function handlerItemClick (event) {
   element.lastElementChild.classList.toggle ('hidden'); 
 
   //hacer un bucle por la lista, si alguno de ellos contiene pokemon img y su .pair es igual al del event.current.target....sino. se dan la vuelta(hid
-  game();
+  game(element);
 }
 
-function game() {
+function game(element) {
   const cards =document.querySelectorAll('.pokemon-card');
   console.log(cards);
   for (const card of cards) {
-    if(card.lastElementChild.classList.contains('hidden')){
-      console.log('venga va', card.dataset.id);
+    if(card.lastElementChild.classList.contains('hidden') && element.dataset.id !== card.dataset.id){
+      console.log('casi esta');
+      startAgain(card);
     }
   }
+}
+function startAgain(card) {
+  card.firstElementChild.classList.add('hidden');
+  card.lastElementChild.classList.remove('hidden');
 }
 
