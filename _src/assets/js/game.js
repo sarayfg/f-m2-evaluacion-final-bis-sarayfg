@@ -5,8 +5,7 @@ function checkCards (element) {
   for (const card of cards) {
     if (
       card.lastElementChild.classList.contains ('hidden') &&
-      element.dataset.id !== card.dataset.id
-    ) {
+      element.dataset.id !== card.dataset.id) {
       setTimeout (startAgain, 2000);
     }
   }
