@@ -75,10 +75,12 @@ function getSavedCards () {
     }
   }
 }
-
+let cardGroup =[];
 function handlerItemClick (event) {
   const element = event.currentTarget;
   element.firstElementChild.classList.toggle ('hidden');
   element.lastElementChild.classList.toggle ('hidden');
+  cardGroup.push(element.dataset.id);
+  console.log(cardGroup);
   checkCards (element);
 }
