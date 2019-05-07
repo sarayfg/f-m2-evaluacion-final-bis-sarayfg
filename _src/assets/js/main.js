@@ -39,7 +39,6 @@ function getCards () {
         img = data[i].image;
         cardId = data[i].pair;
         printCards (img);
-        console.log (cardId);
       }
     });
 }
@@ -75,12 +74,11 @@ function getSavedCards () {
     }
   }
 }
-let cardGroup =[];
+let cardGroup = [];
 function handlerItemClick (event) {
   const element = event.currentTarget;
   element.firstElementChild.classList.toggle ('hidden');
   element.lastElementChild.classList.toggle ('hidden');
-  cardGroup.push(element.dataset.id);
-  console.log(cardGroup);
+  cardGroup.push (element.dataset.id);
   checkCards (element);
 }

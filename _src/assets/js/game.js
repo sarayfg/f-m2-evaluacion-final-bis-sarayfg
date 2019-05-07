@@ -4,7 +4,6 @@ function checkCards (element) {
   cards = document.querySelectorAll ('.pokemon-card');
   for (const card of cards) {
     if (cardGroup.length === 2 && cardGroup[0] !== cardGroup[1]) {
-      console.log ('no es igual');
       setTimeout (startAgain, 2000);
       cardGroup = [];
     } else if (cardGroup.length === 2 && cardGroup[0] === cardGroup[1]) {
