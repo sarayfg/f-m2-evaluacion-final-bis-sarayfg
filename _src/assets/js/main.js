@@ -9,6 +9,11 @@ let url = '';
 let img = '';
 let cardId = '';
 let cards = '';
+let name= '';
+let isFav= '';
+const logButton= document.querySelector('.log-button');
+
+
 
 getSavedCards ();
 
@@ -35,7 +40,10 @@ function getCards () {
       return response.json ();
     })
     .then (function (data) {
+      console.log(data);
       for (let i = 0; i < data.length; i++) {
+        name= data[i].name;
+        isFav= data[i].fav;
         img = data[i].image;
         cardId = data[i].pair;
         printCards (img);
@@ -53,10 +61,24 @@ function printCards (imagen) {
   const newDefaultImage = document.createElement ('img');
   newDefaultImage.classList.add ('pokemon-card-default');
   newDefaultImage.src = backCardImg;
+  const newName= document.createElement('p');
+  const newNameContent = document.createTextNode(`${name}`);
+  newName.appendChild(newNameContent);
   newItem.appendChild (newImage);
+  newItem.appendChild(newName);
   newItem.appendChild (newDefaultImage);
   cardsList.appendChild (newItem);
+  pokemonFav();
   newItem.addEventListener ('click', handlerItemClick);
+}
+logButton.addEventListener('click', handlerLogButtonClick);
+
+function handlerLogButtonClick() {
+  const pokemonList = document.querySelectorAll('.pokemon-card');
+  for ( const pokemonItem of pokemonList) {
+    console.log(pokemonItem.querySelector('p').innerHTML);
+  }
+  
 }
 
 function saveCardsNumber () {
@@ -81,4 +103,10 @@ function handlerItemClick (event) {
   element.lastElementChild.classList.toggle ('hidden');
   cardGroup.push (element.dataset.id);
   checkCards (element);
+}
+
+function pokemonFav() {
+  if(isFav === true) {
+    console.log(name);
+  }
 }
